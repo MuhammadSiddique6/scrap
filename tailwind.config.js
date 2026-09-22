@@ -9,6 +9,9 @@ module.exports = {
       colors: {
         primary: '#0f1724',
         accent: '#16a34a'
+      },
+      screens: {
+        xs: '420px'
       }
     }
   },

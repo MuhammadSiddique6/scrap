@@ -4,7 +4,6 @@ export type ScrapItem = {
   slug: string
   category: string
   description: string
-  quantity: string
   condition: string
   location: string
   image: string
@@ -17,9 +16,8 @@ export const scrapItems: ScrapItem[] = [
     slug: 'copper-scrap',
     category: 'Copper Scrap',
     description: 'High-quality copper scrap available for buyers.',
-    quantity: '500 KG',
     condition: 'Good',
-    location: 'Lahore, Pakistan',
+    location: 'Sharjah, UAE',
     image: '/images/copper.jpg'
   },
   {
@@ -28,9 +26,8 @@ export const scrapItems: ScrapItem[] = [
     slug: 'aluminum-sheets',
     category: 'Aluminum Scrap',
     description: 'Mixed aluminum sheets and offcuts.',
-    quantity: '1200 KG',
     condition: 'Mixed',
-    location: 'Lahore, Pakistan',
+    location: 'Sharjah, UAE',
     image: '/images/aluminium.jpg'
   },
   {
@@ -39,9 +36,8 @@ export const scrapItems: ScrapItem[] = [
     slug: 'brass-scrap',
     category: 'Brass Scrap',
     description: 'Ferrous iron scrap suitable for recycling.',
-    quantity: '2000 KG',
     condition: 'Used',
-    location: 'Lahore, Pakistan',
+    location: 'Sharjah, UAE',
     image: '/images/brass.jpg'
   },
   {
@@ -50,9 +46,8 @@ export const scrapItems: ScrapItem[] = [
     slug: 'computer-items',
     category: 'Computer Items',
     description: 'Mixed aluminum sheets and offcuts.',
-    quantity: '1200 KG',
     condition: 'Mixed',
-    location: 'Lahore, Pakistan',
+    location: 'Sharjah, UAE',
     image: '/images/computer.jpg'
   },
   {
@@ -61,9 +56,8 @@ export const scrapItems: ScrapItem[] = [
     slug: 'acscrap',
     category: 'AC Scrap',
     description: 'Ferrous iron scrap suitable for recycling.',
-    quantity: '2000 KG',
     condition: 'Used',
-    location: 'Lahore, Pakistan',
+    location: 'Sharjah, UAE',
     image: '/images/ac.jpg'
   },
   {
@@ -72,9 +66,8 @@ export const scrapItems: ScrapItem[] = [
     slug: 'compressor-scrap',
     category: 'Compressor Scrap',
     description: 'High-quality copper scrap available for buyers.',
-    quantity: '500 KG',
     condition: 'Good',
-    location: 'Lahore, Pakistan',
+    location: 'Sharjah, UAE',
     image: '/images/compressor.jpg'
   },
   {
@@ -83,9 +76,8 @@ export const scrapItems: ScrapItem[] = [
     slug: 'battery',
     category: 'battery',
     description: 'Mixed aluminum sheets and offcuts.',
-    quantity: '1200 KG',
     condition: 'Mixed',
-    location: 'Lahore, Pakistan',
+    location: 'Sharjah, UAE',
     image: '/images/battery.jpg'
   }
 ]

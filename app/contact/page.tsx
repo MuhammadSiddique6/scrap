@@ -7,11 +7,5 @@ export const metadata = {
 }
 
 export default function Contact() {
-  return (
-    <div className="container py-12">
-      <h1 className="text-3xl font-bold">Contact Us</h1>
-      <p className="mt-2">Office: {companyInfo.address}</p>
-      <ContactSection />
-    </div>
-  )
+  return <ContactSection />
 }

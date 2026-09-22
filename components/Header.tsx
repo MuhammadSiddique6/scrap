@@ -1,39 +1,94 @@
 "use client"
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { companyInfo } from '../data/company'
 
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/scrap', label: 'Scrap Inventory' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+]
+
 export default function Header() {
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+
   return (
-    <header className="bg-primary text-white sticky top-0 z-40 shadow-sm">
-      <div className="container flex items-center justify-between py-4">
-        <Link href="/" className="text-xl font-bold">{companyInfo.name}</Link>
+    <header className="bg-primary/95 text-white sticky top-0 z-40 shadow-sm backdrop-blur">
+      <div className="container flex items-center justify-between gap-3 py-3 sm:py-4">
+        <Link href="/" className="min-w-0 font-bold leading-tight">
+          <span className="block truncate text-base sm:hidden">{companyInfo.shortName}</span>
+          <span className="hidden sm:block text-lg lg:text-xl">{companyInfo.name}</span>
+        </Link>
 
         <nav className="hidden md:flex gap-6 items-center">
-          <Link href="/">Home</Link>
-          <Link href="/scrap">Scrap Inventory</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
-          <a className="bg-green-600 text-white px-3 py-2 rounded transition" href={`https://wa.me/${companyInfo.whatsapp}`} target="_blank" rel="noreferrer">WhatsApp Us</a>
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`nav-link ${pathname === link.href ? 'text-white after:!w-full' : ''}`}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <a
+            className="btn-primary"
+            href={`https://wa.me/${companyInfo.whatsapp}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            WhatsApp Us
+          </a>
         </nav>
 
-        <div className="md:hidden flex items-center">
-          <button aria-label="Open menu" onClick={() => setOpen((s) => !s)} className="mr-2 p-2 rounded hover:bg-slate-700">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        <div className="md:hidden flex items-center gap-2">
+          <button
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((s) => !s)}
+            className="p-2 rounded-lg hover:bg-white/10 transition"
+          >
+            {open ? (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M3 12h18M3 6h18M3 18h18" />
+              </svg>
+            )}
           </button>
-          <a className="bg-green-600 text-white px-3 py-2 rounded" href={`https://wa.me/${companyInfo.whatsapp}`} target="_blank" rel="noreferrer">WhatsApp</a>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div className={`md:hidden bg-primary/95 transform origin-top transition-all duration-200 ${open ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0 pointer-events-none'}`}>
-        <div className="px-4 pb-4 pt-2 space-y-2">
-          <Link href="/" onClick={() => setOpen(false)} className="block py-2">Home</Link>
-          <Link href="/scrap" onClick={() => setOpen(false)} className="block py-2">Scrap Inventory</Link>
-          <Link href="/about" onClick={() => setOpen(false)} className="block py-2">About</Link>
-          <Link href="/contact" onClick={() => setOpen(false)} className="block py-2">Contact</Link>
-          <a className="inline-block bg-green-600 text-white px-3 py-2 rounded mt-2" href={`https://wa.me/${companyInfo.whatsapp}`} target="_blank" rel="noreferrer">WhatsApp Us</a>
+      <div
+        className={`md:hidden overflow-hidden bg-primary transition-all duration-300 ${
+          open ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="px-4 pb-4 pt-1 space-y-1">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className={`block rounded-lg px-3 py-3 ${
+                pathname === link.href ? 'bg-white/10 font-semibold' : 'hover:bg-white/5'
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <a
+            className="btn-primary mt-2 w-full"
+            href={`https://wa.me/${companyInfo.whatsapp}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            WhatsApp Us
+          </a>
         </div>
       </div>
     </header>
