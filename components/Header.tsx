@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { companyInfo } from '../data/company'
 
 const links = [
@@ -14,6 +14,10 @@ const links = [
 export default function Header() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
+
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
 
   return (
     <header className="bg-primary/95 text-white sticky top-0 z-40 shadow-sm backdrop-blur">
